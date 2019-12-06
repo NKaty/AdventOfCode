@@ -86,3 +86,5 @@ The above example program uses an input instruction to ask for a single number. 
 This time, when the TEST diagnostic program runs its input instruction to get the ID of the system to test, provide it 5, the ID for the ship's thermal radiator controller. This diagnostic test suite only outputs one number, the diagnostic code.
 
 What is the diagnostic code for system ID 5?
+
+Link to task: https://adventofcode.com/2019/day/5
