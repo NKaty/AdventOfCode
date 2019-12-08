@@ -43,10 +43,11 @@ def depth_search(graph, start):
     return sum(orbits_num)
 
 
-with open('day6/input.txt') as inp:
-    orbits = [line.strip().split(')') for line in inp]
+if __name__ == "__main__":
+    with open('day6/input.txt') as inp:
+        orbits = [line.strip().split(')') for line in inp]
 
-directed_graph = get_directed_graph(orbits)
+    directed_graph = get_directed_graph(orbits)
 
-print(depth_search(directed_graph, 'COM'))  # 300598
-print(depth_search(directed_graph, topological_sort(directed_graph)[0]))  # 300598
+    print(depth_search(directed_graph, 'COM'))  # 300598
+    print(depth_search(directed_graph, topological_sort(directed_graph)[0]))  # 300598

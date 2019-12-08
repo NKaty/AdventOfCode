@@ -6,8 +6,8 @@ def get_instructions(opcode):
         opc_list.append(opcode % 10)
         opcode = opcode // 10
 
-    if opc_list[0] not in list(range(1, 9)) + [99]\
-            or not all(opc_list[i] in (0, 1) for i in (1, 2))\
+    if opc_list[0] not in list(range(1, 9)) + [99] \
+            or not all(opc_list[i] in (0, 1) for i in (1, 2)) \
             or opc_list[3] != 0:
         raise Exception('Wrong opcode.')
 
@@ -59,7 +59,8 @@ def check_output(output):
     return output[len(output) - 1]
 
 
-with open('day5/input.txt') as inp:
-    ns = list(map(int, inp.read().strip().split(',')))
+if __name__ == "__main__":
+    with open('day5/input.txt') as inp:
+        ns = list(map(int, inp.read().strip().split(',')))
 
-print(check_output(process_instructions(ns, [5])))  # 10428568
+    print(check_output(process_instructions(ns, [5])))  # 10428568

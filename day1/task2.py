@@ -6,7 +6,8 @@ def count_fuel(ms):
     return all_fuel
 
 
-with open('day1/input.txt') as inp:
-    masses = inp.readlines()
+if __name__ == "__main__":
+    with open('day1/input.txt') as inp:
+        masses = inp.readlines()
 
-print(sum(map(count_fuel, masses)))  # 4816402
+    print(sum(map(count_fuel, masses)))  # 4816402

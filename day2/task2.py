@@ -26,9 +26,9 @@ def find_pair(output):
     return 'Not found'
 
 
-with open('day2/input.txt') as inp:
-    ns = inp.read().strip().split(',')
+if __name__ == "__main__":
+    with open('day2/input.txt') as inp:
+        ns = inp.read().strip().split(',')
 
-ns = list(map(int, ns))
-
-print(find_pair(19690720))  # 3376
+    ns = list(map(int, ns))
+    print(find_pair(19690720))  # 3376

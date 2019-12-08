@@ -29,11 +29,12 @@ def find_shortest_distance(graph, start, end):
     return None
 
 
-with open('day6/input.txt') as inp:
-    orbits = [line.strip().split(')') for line in inp]
+if __name__ == "__main__":
+    with open('day6/input.txt') as inp:
+        orbits = [line.strip().split(')') for line in inp]
 
-undirected_graph = get_undirected_graph(orbits)
+    undirected_graph = get_undirected_graph(orbits)
 
-# We need to find the distance between the objects,
-# YOU and SAN are orbiting - not between YOU and SAN.
-print(find_shortest_distance(undirected_graph, 'YOU', 'SAN') - 2)  # 520
+    # We need to find the distance between the objects,
+    # YOU and SAN are orbiting - not between YOU and SAN.
+    print(find_shortest_distance(undirected_graph, 'YOU', 'SAN') - 2)  # 520

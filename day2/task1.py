@@ -10,11 +10,12 @@ def process_opcode(numbers):
             raise Exception('Wrong opcode.')
 
 
-with open('day2/input.txt') as inp:
-    ns = inp.read().strip().split(',')
+if __name__ == "__main__":
+    with open('day2/input.txt') as inp:
+        ns = inp.read().strip().split(',')
 
-ns = list(map(int, ns))
-ns[1] = 12
-ns[2] = 2
+    ns = list(map(int, ns))
+    ns[1] = 12
+    ns[2] = 2
 
-print(process_opcode(ns)[0])  # 7594646
+    print(process_opcode(ns)[0])  # 7594646

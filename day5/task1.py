@@ -48,7 +48,8 @@ def check_output(output):
     return output[len(output) - 1]
 
 
-with open('day5/input.txt') as inp:
-    ns = list(map(int, inp.read().strip().split(',')))
+if __name__ == "__main__":
+    with open('day5/input.txt') as inp:
+        ns = list(map(int, inp.read().strip().split(',')))
 
-print(check_output(process_instructions(ns, [1])))  # 11933517
+    print(check_output(process_instructions(ns, [1])))  # 11933517

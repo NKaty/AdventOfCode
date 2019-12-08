@@ -80,7 +80,8 @@ def get_max_output(numbers, phases, start):
     return max(outputs)
 
 
-with open('day7/input.txt') as inp:
-    ns = list(map(int, inp.read().strip().split(',')))
+if __name__ == "__main__":
+    with open('day7/input.txt') as inp:
+        ns = list(map(int, inp.read().strip().split(',')))
 
-print(get_max_output(ns, (5, 6, 7, 8, 9), 0))  # 36384144
+    print(get_max_output(ns, (5, 6, 7, 8, 9), 0))  # 36384144
