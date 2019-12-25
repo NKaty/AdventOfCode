@@ -32,7 +32,7 @@ def extend_list(list_, i):
         return list_
 
 
-def process_instructions(data, inputs, split_code=10, relative_base=0):
+def process_instructions(data, inputs, relative_base=0):
     def get_index(idx, mode):
         if mode == 1:
             raise Exception('Wrong mode.')
@@ -46,7 +46,6 @@ def process_instructions(data, inputs, split_code=10, relative_base=0):
 
     i = 0
     input_index = 0
-    outputs = []
 
     while i < len(data):
         opcode = get_instructions(data[i])
@@ -73,13 +72,9 @@ def process_instructions(data, inputs, split_code=10, relative_base=0):
             except IndexError:
                 raise Exception('No input to process.')
         elif opcode[0] == 4:
-            if param1 == split_code:
-                new_input = yield outputs
-                outputs = []
-                if new_input is not None:
-                    inputs.append(new_input)
-            else:
-                outputs.append(param1)
+            new_input = yield param1
+            if new_input is not None:
+                inputs += new_input
             i += 2
         elif opcode[0] == 5:
             i = i + 3 if param1 == 0 else param2
@@ -97,6 +92,6 @@ def process_instructions(data, inputs, split_code=10, relative_base=0):
             relative_base += param1
             i += 2
         elif opcode[0] == 99:
-            return None
+            yield None
         else:
             raise Exception('Wrong opcode.')

@@ -3,7 +3,18 @@ from intcode import process_instructions
 
 def get_scaffold_grid(data):
     gen = process_instructions(data, [])
-    return [output for output in gen]
+    grid = []
+    grid_row = []
+
+    while True:
+        while (output := next(gen)) != 10:
+            grid_row.append(output)
+        if not len(grid_row) and output == 10:
+            break
+        grid.append(grid_row)
+        grid_row = []
+
+    return grid
 
 
 def count_alignment_params_sum(data, tiles):
