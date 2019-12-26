@@ -54,7 +54,7 @@ def get_vectors(wire):
 
 
 if __name__ == "__main__":
-    with open('day3/input.txt') as inp:
+    with open('day03/input.txt') as inp:
         ws = [line.strip().split(',') for line in inp]
 
     print(find_min_steps(ws))  # 56410

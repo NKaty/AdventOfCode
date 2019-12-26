@@ -3,7 +3,7 @@ def count_fuel(ms):
 
 
 if __name__ == "__main__":
-    with open('day1/input.txt') as inp:
+    with open('day01/input.txt') as inp:
         masses = inp.readlines()
 
     print(count_fuel(masses))  # 3212842

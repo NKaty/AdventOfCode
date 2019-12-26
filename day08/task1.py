@@ -30,7 +30,7 @@ def get_check_value(image, check_digits):
 
 
 if __name__ == "__main__":
-    with open('day8/input.txt') as inp:
+    with open('day08/input.txt') as inp:
         img = inp.read().strip()
 
     formatted_image = format_image(img, (25, 6))

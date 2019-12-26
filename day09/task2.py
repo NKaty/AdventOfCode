@@ -103,7 +103,7 @@ def check_output(output):
 
 
 if __name__ == "__main__":
-    with open('day9/input.txt') as inp:
+    with open('day09/input.txt') as inp:
         ns = list(map(int, inp.read().strip().split(',')))
 
     print(check_output(process_instructions(ns, [2], 0)))  # 58879

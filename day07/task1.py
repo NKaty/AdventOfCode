@@ -20,6 +20,7 @@ def get_instructions(opcode):
 def process_instructions(numbers, inputs):
     i = 0
     input_index = 0
+    outputs = []
 
     while i < len(numbers):
         opcode = get_instructions(numbers[i])
@@ -37,9 +38,7 @@ def process_instructions(numbers, inputs):
             except IndexError:
                 raise Exception('No input to process.')
         elif opcode[0] == 4:
-            output = numbers[numbers[i + 1]] if opcode[1] == 0 else numbers[i + 1]
-            new_input = yield output
-            inputs.append(new_input)
+            outputs.append(numbers[numbers[i + 1]] if opcode[1] == 0 else numbers[i + 1])
             i += 2
         elif opcode[0] == 5:
             i = i + 3 if param1 == 0 else param2
@@ -52,9 +51,15 @@ def process_instructions(numbers, inputs):
             numbers[numbers[i + 3]] = 1 if param1 == param2 else 0
             i += 4
         elif opcode[0] == 99:
-            yield None
+            return outputs
         else:
             raise Exception('Wrong opcode.')
+
+
+def check_output(output):
+    if len(list(filter(lambda x: x != 0, output))) > 1:
+        raise Exception('There is more than one Non-zero output. Check your program.')
+    return output[len(output) - 1]
 
 
 def get_max_output(numbers, phases, start):
@@ -65,23 +70,17 @@ def get_max_output(numbers, phases, start):
 
     for phases_seq in itertools.permutations(phases, len(phases)):
         start_input = start
-        gens = []
         for phase in phases_seq:
-            gen = process_instructions(numbers[:], [phase, start_input])
-            gens.append(gen)
-            start_input = next(gen)
-        for gen in itertools.cycle(gens):
-            start_input = gen.send(start_input)
-            if start_input is None:
-                break
-            output = start_input
+            output_seq = process_instructions(numbers[:], [phase, start_input])
+            output = check_output(output_seq)
+            start_input = output
         outputs.append(output)
 
     return max(outputs)
 
 
 if __name__ == "__main__":
-    with open('day7/input.txt') as inp:
+    with open('day07/input.txt') as inp:
         ns = list(map(int, inp.read().strip().split(',')))
 
-    print(get_max_output(ns, (5, 6, 7, 8, 9), 0))  # 36384144
+    print(get_max_output(ns, (0, 1, 2, 3, 4), 0))  # 34686

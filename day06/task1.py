@@ -44,7 +44,7 @@ def depth_search(graph, start):
 
 
 if __name__ == "__main__":
-    with open('day6/input.txt') as inp:
+    with open('day06/input.txt') as inp:
         orbits = [line.strip().split(')') for line in inp]
 
     directed_graph = get_directed_graph(orbits)

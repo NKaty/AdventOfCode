@@ -30,7 +30,7 @@ def find_shortest_distance(graph, start, end):
 
 
 if __name__ == "__main__":
-    with open('day6/input.txt') as inp:
+    with open('day06/input.txt') as inp:
         orbits = [line.strip().split(')') for line in inp]
 
     undirected_graph = get_undirected_graph(orbits)

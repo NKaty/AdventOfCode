@@ -19,7 +19,7 @@ def find_passwords(interval):
 
 
 if __name__ == "__main__":
-    with open('day4/input.txt') as inp:
+    with open('day04/input.txt') as inp:
         intr = tuple(map(int, inp.read().strip().split('-')))
 
     print(len(find_passwords(intr)))  # 1653
