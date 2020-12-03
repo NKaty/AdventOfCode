@@ -2,8 +2,7 @@ import re
 
 
 def find_valid_passwords(passwords):
-    return sum((item[3][item[0] - 1] == item[2] and item[3][item[1] - 1] != item[2]) or (
-            item[3][item[0] - 1] != item[2] and item[3][item[1] - 1] == item[2]) for item in
+    return sum(((item[3][item[0] - 1] == item[2]) ^ (item[3][item[1] - 1] == item[2])) for item in
                passwords)
 
 
