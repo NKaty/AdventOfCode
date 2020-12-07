@@ -3,7 +3,7 @@ import re
 
 def count_bags(graph, start):
     def traverse(nodes):
-        return sum(node[0] * traverse(graph[node[1]]) for node in nodes) + 1 if len(nodes) else 1
+        return sum(node[0] * traverse(graph[node[1]]) for node in nodes) + 1
 
     return traverse(graph[start]) - 1
 
