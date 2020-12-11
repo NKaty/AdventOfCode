@@ -18,6 +18,8 @@ def find_occupied_seats(grid):
         previous_grid = deepcopy(current_grid)
         for i in range(len(grid)):
             for j in range(len(grid[0])):
+                if previous_grid[i][j] == '.':
+                    continue
                 empty_seats = sum(
                     is_first_seen_sead_not_occupied(previous_grid, shift, i, j) for shift in shifts)
                 if previous_grid[i][j] == 'L' and empty_seats == 8:
